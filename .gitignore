@@ -1,0 +1,44 @@
+# Proyecto
+*.sln
+*.vcxproj
+*.csproj
+*.user
+
+# Carpeta de salida
+bin/
+obj/
+
+# Dependencias de NuGet
+/.nuget/
+/packages/
+*.nuget.props
+*.nuget.targets
+
+# Carpeta de herramientas
+/.tools/
+
+# Archivos generados por Visual Studio
+_*
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+*.pubxml
+*.publishproj
+*.userosscache
+*.cache
+*.vspscc
+*.vssscc
+*.appxrecipe
+*.wapproj
+*.launchsettings.json
+
+# Logs y archivos temporales
+*.log
+*.vs/
+*.tmp
+*.swp
+
+# Otros archivos y carpetas generados
+[Tt]humbs.db
+*.DS_Store
