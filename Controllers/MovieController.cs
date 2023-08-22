@@ -1,21 +1,21 @@
-using MKIPizza.Models;
-using MKIPizza.Services;
+using MKIMovie.Models;
+using MKIMovie.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MKIPizza.Controllers;
+namespace MKIMovie.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PizzaController : ControllerBase
+public class MovieController : ControllerBase
 {
-    public PizzaController() { }
+    public MovieController() { }
 
     [HttpGet]
-    public ActionResult<List<Pizza>> GetAll()
+    public ActionResult<List<Movie>> GetAll()
     {
         try
         {
-            return PizzaService.GetAll();
+            return MovieService.GetAll();
         }
         catch (Exception ex)
         {
@@ -24,16 +24,16 @@ public class PizzaController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Pizza> Get(int id)
+    public ActionResult<Movie> Get(int id)
     {
         try
         {
-            var pizza = PizzaService.Get(id);
+            var movie = MovieService.Get(id);
 
-            if (pizza == null)
+            if (movie == null)
                 return NotFound();
 
-            return pizza;
+            return movie;
         }
         catch (Exception ex)
         {
@@ -42,12 +42,12 @@ public class PizzaController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create(Pizza pizza)
+    public IActionResult Create(Movie movie)
     {
         try
         {
-            PizzaService.Add(pizza);
-            return CreatedAtAction(nameof(Get), new { id = pizza.Id }, pizza);
+            MovieService.Add(movie);
+            return CreatedAtAction(nameof(Get), new { id = movie.Id }, movie);
         }
         catch (Exception ex)
         {
@@ -56,18 +56,18 @@ public class PizzaController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult Update(int id, Pizza pizza)
+    public IActionResult Update(int id, Movie movie)
     {
         try
         {
-            if (id != pizza.Id)
+            if (id != movie.Id)
                 return BadRequest();
 
-            var existingPizza = PizzaService.Get(id);
-            if (existingPizza is null)
+            var existingMovie = MovieService.Get(id);
+            if (existingMovie is null)
                 return NotFound();
 
-            PizzaService.Update(pizza);
+            MovieService.Update(movie);
 
             return NoContent();
         }
@@ -82,12 +82,12 @@ public class PizzaController : ControllerBase
     {
         try
         {
-            var pizza = PizzaService.Get(id);
+            var movie = MovieService.Get(id);
 
-            if (pizza is null)
+            if (movie is null)
                 return NotFound();
 
-            PizzaService.Delete(id);
+            MovieService.Delete(id);
 
             return NoContent();
         }
